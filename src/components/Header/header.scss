@@ -1,0 +1,51 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.header {
+    @include flex-container-between;
+    padding: $panelGap;
+    padding-bottom: $shelfGap;
+    
+    &__nav {
+        display: flex;
+        align-items: center;
+
+        gap: $panelGap;
+    }
+
+    &__menu {
+        position: relative;
+    }
+}
+
+.btn__header {
+    @include flex-container-center;
+
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 50%;
+    background: $secondaryBgColor;
+
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.user__menu {
+    @include flex-column;
+
+    position: absolute;
+    top: 35px;
+    right: 0;
+    z-index: 1000;
+
+    min-width: 150px;
+    cursor: pointer;
+}

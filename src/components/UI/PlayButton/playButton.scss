@@ -1,0 +1,35 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.btn__play {
+    position: relative;
+    top: 5px;
+    left: 0;
+
+    @include transition-in-03s;
+    @include flex-container-center;
+    @include full-window;
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 48px;
+    max-height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: $unActiveGreenColor;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+
+    &--icon {
+        width: 65%;
+        height: 65%;
+    }
+
+    &:hover {
+        background: $mainGreenColor;
+        scale: 1.09;
+    }
+}

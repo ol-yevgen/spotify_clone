@@ -1,0 +1,196 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.side {
+    @include flex-column;
+    gap: $panelGap;
+
+    min-width: 280px;
+
+    border-radius: $borderRadius-8;
+    scroll-behavior: smooth;
+
+    &__menu {
+        height: 100%;
+    }
+
+    &__nav {
+        @include transition-in-03s;
+
+        display: flex;
+        align-items: center;
+        gap: $sideGap;
+
+        width: 100%;
+        padding: $panelGap 12px;
+
+        font-size: 16px;
+        font-weight: 700;
+
+        cursor: pointer;
+
+        &:hover {
+            color: $secondaryTextColor;
+        }
+
+        &:hover svg > path {
+            fill: $secondaryTextColor;
+        }
+        &--active {
+            color: $secondaryTextColor;
+
+            & svg > path {
+                fill: $secondaryTextColor;
+            }
+        }
+    }
+}
+
+.playlists {
+    height: calc(100% - 147px);
+
+    overflow-y: hidden;
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth;
+
+    &:hover {
+        overflow-y: scroll;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: $sideGap;
+
+        padding: $panelGap;
+        border-radius: $borderRadius-8;
+        @include transition-in-03s;
+
+        &:hover {
+            background: $hoverBgColor;
+            cursor: pointer;
+        }
+    }
+
+    &__image {
+        border-radius: $borderRadius-8;
+    }
+
+    &__info {
+        height: 100%;
+        @include flex-column;
+        gap: 4px;
+    }
+
+    &__title {
+        display: block;
+
+        font-weight: 500;
+        font-size: 0.95rem;
+
+        color: $secondaryTextColor;
+
+        @include hideText;
+    }
+
+    &__subtitle {
+        display: block;
+        font-size: 0.81rem;
+        font-weight: normal;
+
+        @include hideText;
+    }
+
+    &__create {
+        position: relative;
+
+        padding: $shelfGap;
+        background: $hoverBgColor;
+
+        font-weight: 600;
+        font-size: 0.86rem;
+
+        &--btn {
+            @include transition-in-03s;
+            padding: calc($panelGap * 0.8);
+
+            width: 70%;
+            margin-top: $panelGap;
+
+            color: $mainBgColor;
+            background: $secondaryTextColor;
+
+            border: none;
+            outline: none;
+            border-radius: $shelfGap;
+
+            cursor: pointer;
+
+            &:hover {
+                scale: 1.03;
+            }
+        }
+
+        &--tippy {
+            @include flex-column;
+            gap: $panelGap;
+
+            position: absolute;
+            top: 7%;
+            right: -90%;
+            z-index: 100;
+
+            min-width: 290px;
+            padding: $shelfGap;
+
+            background: $tippyBgColor;
+
+            border-radius: $borderRadius-8;
+
+            font-weight: 600;
+            font-size: 0.86rem;
+
+            & > span {
+                color: $secondaryTextColor;
+                font-size: 0.75rem;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                left: -3%;
+                top: 42%;
+
+                width: 0;
+                height: 0;
+
+                border-top: 10px solid transparent;
+                border-right: 9px solid $tippyBgColor;
+                border-bottom: 10px solid transparent;
+            }
+        }
+
+        &--login {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: $panelGap;
+        }
+
+        &--cancel {
+            cursor: pointer;
+            @include transition-in-03s;
+
+            &:hover {
+                color: $secondaryTextColor;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .playlists__create--tippy {
+        right: -109%;
+    }
+}

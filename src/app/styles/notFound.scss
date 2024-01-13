@@ -1,0 +1,22 @@
+@import '@/app/styles/mixins.scss';
+@import '@/app/styles/variables.scss';
+
+.not-found {
+    @include flex-container-center;
+    flex-direction: column;
+    gap: $panelGap;
+
+    @include full-window;
+}
+
+.btn__not-found {
+    border: none;
+    border-radius: $borderRadius-8;
+
+    color: $secondaryTextColor;
+    background: $mainGreenColor;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}

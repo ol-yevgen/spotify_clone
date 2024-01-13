@@ -1,0 +1,183 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.shelf {
+    @include flex-column;
+    min-height: 300px;
+    margin-bottom: calc($shelfGap * 1.5);
+
+    &__first {
+        margin-bottom: calc($shelfGap * 1.5 + $panelGap);
+    }
+
+    &__mix {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $panelGap;
+
+        font-size: 0.8rem;
+        font-weight: 500;
+
+        &--item {
+        }
+
+        &--link {
+            display: flex;
+            align-items: center;
+            gap: $panelGap;
+
+            background: $mixCardBgColor;
+            border-radius: $borderRadius-8;
+
+            overflow: hidden;
+
+            height: 48px;
+
+            &:hover {
+                background: $mixCardHoverBgColor;
+            }
+
+            &:hover .btn__play {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        &--image {
+            position: relative;
+            @include full-window;
+            min-width: 48px;
+            max-width: 48px;
+            min-height: 48px;
+        }
+
+        &--content {
+            @include flex-container-between;
+            gap: $panelGap;
+            width: 100%;
+
+            padding-right: $panelGap;
+        }
+
+        &--play {
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__top {
+        @include flex-container-between;
+        @include transition-in-03s;
+
+        margin-bottom: $shelfGap;
+
+        font-weight: 700;
+    }
+
+    &__title,
+    &__all {
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__all {
+        color: $mainTextColor;
+        font-size: 0.85rem;
+
+        &:hover {
+            color: $mainTextColor;
+        }
+    }
+
+    &__cards {
+        display: grid;
+        // grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(var(--cards-grid), 1fr);
+        gap: 24px;
+    }
+}
+
+.card {
+    &__link {
+        @include transition-in-03s;
+        @include flex-column;
+        gap: $shelfGap;
+
+        padding: $shelfGap;
+        background: $cardBgColor;
+        border-radius: $borderRadius-8;
+
+        &:hover {
+            background: $cardBgHoverColor;
+        }
+
+        &:hover .btn__play {
+            top: 0;
+            opacity: 1;
+        }
+    }
+
+    &__image {
+        position: relative;
+        border-radius: $borderRadius-8;
+        overflow: hidden;
+
+        &--container {
+        }
+
+        &--image {
+            @include full-window;
+        }
+    }
+
+    &__info {
+        &--label {
+            font-weight: 700;
+
+            @include hideText;
+        }
+
+        &--title {
+            padding-top: $panelGap;
+            color: $mainTextColor;
+            font-size: 0.87rem;
+
+            @include hideText;
+        }
+    }
+
+    &__play {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 10;
+
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .shelf {
+        &__mix {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .shelf {
+        &__cards {
+            gap: 18px;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .shelf {
+        &__cards {
+            gap: 12px;
+        }
+    }
+}

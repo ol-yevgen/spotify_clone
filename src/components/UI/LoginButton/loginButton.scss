@@ -1,0 +1,39 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.btn__login {
+    padding: 10px;
+
+    outline: none;
+    cursor: pointer;
+
+    border: none;
+    outline: none;
+
+    font-size: 0.86rem;
+    font-weight: 600;
+
+    @include transition-in-03s;
+
+    &--black {
+        border-radius: $borderRadius-8;
+
+        background: $hoverBgColor;
+        color: $secondaryTextColor;
+
+        &:hover {
+            background: $secondaryBgColor;
+        }
+    }
+
+    &--white {
+        border-radius: $shelfGap;
+
+        background: $secondaryTextColor;
+        color: $mainBgColor;
+
+        &:hover {
+            scale: 1.03;
+        }
+    }
+}

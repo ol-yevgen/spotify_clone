@@ -1,0 +1,74 @@
+@import "@/app/styles/mixins.scss";
+@import "@/app/styles/variables.scss";
+
+.user {
+    position: relative;
+
+    &__image {
+        @include full-window;
+
+        border-radius: 50%;
+        object-fit: cover
+    }
+
+    &__menu {
+        @include flex-column;
+
+        position: absolute;
+        top: 35px;
+        right: 0;
+        z-index: 1000;
+
+        min-width: 150px;
+        cursor: pointer;
+
+        &--item {
+            @include transition-in-03s;
+            position: relative;
+
+            width: 100%;
+
+            text-align: right;
+
+            &:hover {
+                color: $secondaryTextColor;
+                background: $hoverBgColor;
+            }
+        }
+
+        & > li:last-child > &--item::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            content: "";
+            width: 100%;
+            height: 1px;
+
+            opacity: 0.2;
+            background: $mainTextColor;
+        }
+    }
+}
+
+.btn__user {
+    @include flex-container-center;
+
+    position: relative;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 4px;
+
+    border: none;
+    border-radius: 50%;
+    background: $secondaryBgColor;
+
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
