@@ -8,8 +8,10 @@ import Footer from '@/components/Footer/Footer'
 import { PageHistoryProvider } from '@/providers/PagesHistoryProvider'
 import SessionProvider from '@/providers/NextAuthProvider'
 import Player from '@/components/Player/Player'
-import {IGetSession } from '@/types/types'
+import {IGetSession, IUser } from '@/types/types'
 import { getSession } from '@/server/actions'
+import { getServerSession } from 'next-auth'
+import { NEXT_AUTH_OPTIONS } from '@/server/authOptions'
 
 const inter = Raleway({
     subsets: ['latin'],
@@ -27,7 +29,9 @@ export default async function RootLayout({
     children: React.ReactNode
     }) {
 
-    const { session, userSession } = await getSession() as IGetSession
+    // const { session, userSession } = await getSession() as IGetSession
+    const session = await getServerSession(NEXT_AUTH_OPTIONS)
+    const userSession = session?.user as IUser
 
     return (
         <html lang="en">

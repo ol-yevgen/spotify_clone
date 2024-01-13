@@ -1,9 +1,5 @@
-import Shelf from "../../../components/Shelf/Shelf";
-import Image from "next/image";
-import Link from "next/link";
-import PlayButton from "@/components/UI/PlayButton/PlayButton";
-import { getTimeOfDay } from "@/libs/getTimeOfDay";
-import axios from "axios";
+import Shelf from "@/components/Shelf/Shelf";
+
 import { IGetSession, IUser } from "@/types/types";
 import { getSession } from "@/server/actions";
 
