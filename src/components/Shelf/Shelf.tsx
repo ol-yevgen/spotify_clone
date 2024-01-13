@@ -12,7 +12,6 @@ import { useQueries, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { getTimeOfDay } from '@/libs/getTimeOfDay';
 import { getData } from '@/server/actions';
-import { pic } from './test';
 import Categories from './Categories';
 
 export interface CustomCSSProperties extends CSSProperties {
@@ -39,7 +38,7 @@ export default function Shelf({ user }: { user: IUser }) {
                 enabled: !!cardsColumns,
                 queryFn: async () => {
                     const newReleases = await getData(`https://api.spotify.com/v1/browse/new-releases?offset=0&limit=${cardsColumns}`, user?.accessToken as string)
-                    
+
                     return newReleases?.data?.albums?.items as ICommonPlaylist[]
                 }
             },
@@ -48,14 +47,14 @@ export default function Shelf({ user }: { user: IUser }) {
                 queryFn: async () => {
                     const categories = await getData('https://api.spotify.com/v1/browse/categories?limit=40', user?.accessToken as string)
                     const sortedCategories = shuffle((categories?.data?.categories?.items as ICategory[])
-                        .map(category => ({id: category.id, name: category.name})))
+                        .map(category => ({ id: category.id, name: category.name })))
                         .slice(0, 2)
-    
+
                     return sortedCategories as ICategory[]
                 }
             },
         ]
-        
+
     });
 
     useEffect(() => {
@@ -104,12 +103,11 @@ export default function Shelf({ user }: { user: IUser }) {
 
                 </ul>
             </section>
-            {/* <Image src={pic} width={300} height={200} alt=''/> */}
-            {categoriesList && 
+            {categoriesList &&
                 categoriesList.map(category => {
                     return <Fragment key={category.id}>
                         <Categories category={category as ICategory} cardsColumns={cardsColumns as number} user={user} />
-                        </Fragment>
+                    </Fragment>
                 })
             }
             <section

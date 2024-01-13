@@ -1,4 +1,4 @@
-import Shelf from "./Shelf";
+import Shelf from "../../../components/Shelf/Shelf";
 import Image from "next/image";
 import Link from "next/link";
 import PlayButton from "@/components/UI/PlayButton/PlayButton";
@@ -10,7 +10,7 @@ import { getSession } from "@/server/actions";
 export default async function Home() {
 
     const { session, userSession } = await getSession() as IGetSession
-    
+
     return (
         <>
             {session &&

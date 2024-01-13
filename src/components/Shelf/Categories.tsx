@@ -15,13 +15,13 @@ interface IProps {
 }
 
 export default function Categories({ cardsColumns, user, category }: IProps) {
-    const { data} = useQuery({
+    const { data } = useQuery({
         queryKey: ['category', cardsColumns, category],
         // enabled: !!cardsColumns,
         queryFn: async () => {
             const categoryData = await getData(`https://api.spotify.com/v1/browse/categories/${category.id}/playlists?limit=${cardsColumns}`, user?.accessToken as string)
             console.log(categoryData?.data?.playlists?.items);
-            
+
             return categoryData?.data?.playlists?.items as ICommonPlaylist[]
         }
     })

@@ -1,13 +1,13 @@
 'use server'
 
-import { getServerSession } from 'next-auth';
-import { NEXT_AUTH_OPTIONS } from '@/app/api/auth/[...nextauth]/route';
+import { Session, getServerSession } from 'next-auth';
+import {NEXT_AUTH_OPTIONS} from '@/server/authOptions';
 import axios from 'axios';
 import { IUser } from '@/types/types';
 
 export const getSession = async () => {
     try {
-        const session = await getServerSession(NEXT_AUTH_OPTIONS)
+        const session = await getServerSession(NEXT_AUTH_OPTIONS) as Session
         const userSession = session?.user as IUser
 
         return { session, userSession } 

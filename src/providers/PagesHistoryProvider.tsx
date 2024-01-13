@@ -25,6 +25,7 @@ export const PageHistoryProvider = ({ children }: PropsWithChildren<{}>) => {
 
     useEffect(() => {
         setPathList([...pathList, currPath])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const addNewRouteToHistory = useCallback((path: string) => {
